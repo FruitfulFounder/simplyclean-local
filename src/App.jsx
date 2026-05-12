@@ -144,7 +144,8 @@ function App() {
       <main id="home">
         <section className="relative overflow-hidden">
           <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_left,_rgba(87,117,61,0.20),_transparent_34%),radial-gradient(circle_at_bottom_right,_rgba(6,69,47,0.18),_transparent_40%)]" />
-          <img src="/images/gemas-logo.png" alt="" className="pointer-events-none absolute right-6 top-20 -z-10 hidden w-[34rem] opacity-[0.06] lg:block" />
+          <img src="/images/gemas-logo.png" alt="" className="pointer-events-none absolute right-0 top-24 -z-10 hidden w-[38rem] opacity-[0.16] lg:block" />
+          <img src="/images/gemas-logo.png" alt="" className="pointer-events-none absolute bottom-10 left-1/2 -z-10 w-[22rem] -translate-x-1/2 opacity-[0.10] lg:hidden" />
           <div className="absolute -bottom-32 left-0 right-0 -z-10 h-72 rounded-[100%_100%_0_0] bg-[#06452f]" />
           <div className="mx-auto grid max-w-7xl items-center gap-12 px-5 py-20 lg:grid-cols-[1.05fr_0.95fr] lg:py-28">
             <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
