@@ -119,7 +119,7 @@ function App() {
               <Sparkles className="h-6 w-6" />
             </div>
             <div className="text-left">
-              <p className="text-lg font-bold tracking-tight">SimplyClean Local</p>
+              <p className="text-lg font-bold tracking-tight">GeMas Cleaning</p>
               <p className="text-xs text-slate-500">Trusted local cleaner network</p>
             </div>
           </button>
@@ -170,7 +170,7 @@ function App() {
                 Find a trusted local cleaner without the back-and-forth.
               </h1>
               <p className="mt-6 max-w-xl text-lg leading-8 text-slate-600">
-                SimplyClean Local helps customers request home cleaning and connect with reliable local cleaners. Choose a specific cleaner or let us match you with the best available person for the job.
+                GeMas Cleaning helps customers request home cleaning and connect with reliable local cleaners. Choose a specific cleaner or let us match you with the best available person for the job.
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <button onClick={() => scrollTo("request")} className="rounded-full bg-emerald-700 px-7 py-4 text-base font-bold text-white shadow-lg shadow-emerald-900/10 hover:bg-emerald-800">
@@ -227,7 +227,7 @@ function App() {
 
         <section id="how-it-works" className="border-y border-stone-200 bg-white py-16">
           <div className="mx-auto max-w-7xl px-5">
-            <SectionHeading eyebrow="Simple process" title="How SimplyClean Local works" description="Start manual and controlled. Customers request, cleaners confirm, and you manage the match until the business is ready for automation." />
+            <SectionHeading eyebrow="Simple process" title="How GeMas Cleaning works" description="Start manual and controlled. Customers request, cleaners confirm, and you manage the match until the business is ready for automation." />
             <div className="mt-10 grid gap-5 md:grid-cols-3">
               <StepCard icon={<ClipboardList />} title="1. Customer sends request" text="The customer shares the home size, cleaning type, preferred date, location, and any special notes." />
               <StepCard icon={<Users />} title="2. We match or confirm" text="They can request a specific cleaner or ask to be matched with the best available cleaner." />
@@ -382,7 +382,7 @@ function App() {
                 </label>
               </div>
               <button className="mt-6 w-full rounded-full bg-slate-950 px-7 py-4 text-base font-black text-white hover:bg-slate-800">
-                Apply to Join SimplyClean Local
+                Apply to Join GeMas Cleaning
               </button>
             </form>
           </div>
@@ -395,7 +395,7 @@ function App() {
             <div className="flex items-center gap-3">
               <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-emerald-600"><Sparkles className="h-5 w-5" /></div>
               <div>
-                <p className="font-black">SimplyClean Local</p>
+                <p className="font-black">GeMas Cleaning</p>
                 <p className="text-sm text-slate-400">Trusted local cleaner network</p>
               </div>
             </div>
@@ -407,7 +407,7 @@ function App() {
             <p className="font-bold">Contact</p>
             <div className="mt-4 grid gap-3 text-sm text-slate-400">
               <p className="flex items-center gap-2"><Phone className="h-4 w-4" /> (503) 555-0125</p>
-              <p className="flex items-center gap-2"><Mail className="h-4 w-4" /> hello@simplycleanlocal.com</p>
+              <p className="flex items-center gap-2"><Mail className="h-4 w-4" /> hello@gemascleaning.com</p>
               <p className="flex items-center gap-2"><MapPin className="h-4 w-4" /> Portland Metro Area</p>
             </div>
           </div>
