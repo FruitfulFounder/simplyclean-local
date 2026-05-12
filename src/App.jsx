@@ -1,108 +1,71 @@
-import React, { useMemo, useState } from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import {
-  Star,
-  ShieldCheck,
   Sparkles,
-  CalendarCheck,
-  MapPin,
-  Languages,
-  CheckCircle2,
   Phone,
   Mail,
-  Users,
-  ClipboardList,
-  HeartHandshake,
+  MapPin,
+  CalendarCheck,
+  ShieldCheck,
+  Home,
+  Bath,
+  Building2,
+  Star,
+  CheckCircle2,
   Menu,
   X,
-  Search,
-  BadgeCheck,
-  Home,
+  Leaf,
+  Clock,
+  HeartHandshake,
 } from "lucide-react";
-
-const cleaners = [
-  {
-    name: "Maria R.",
-    initials: "MR",
-    rating: 4.9,
-    reviews: 28,
-    badge: "Most Requested",
-    languages: "Spanish / Basic English",
-    areas: "Portland, Beaverton, Hillsboro",
-    services: ["Standard Cleaning", "Deep Cleaning", "Move-Out"],
-    bio: "Careful, dependable cleaner known for kitchens, bathrooms, and detailed finishing touches.",
-  },
-  {
-    name: "Ana G.",
-    initials: "AG",
-    rating: 4.8,
-    reviews: 17,
-    badge: "Top Rated",
-    languages: "Spanish / English",
-    areas: "Gresham, Portland, Troutdale",
-    services: ["Standard Cleaning", "Recurring Cleaning", "Apartments"],
-    bio: "Friendly and consistent cleaner who does great recurring home and apartment cleanings.",
-  },
-  {
-    name: "Lucia M.",
-    initials: "LM",
-    rating: 4.7,
-    reviews: 11,
-    badge: "Available This Week",
-    languages: "Spanish",
-    areas: "Portland, Tigard, Lake Oswego",
-    services: ["Deep Cleaning", "Move-In", "Move-Out"],
-    bio: "Great for bigger cleanups, move-in jobs, and homes that need extra attention.",
-  },
-];
 
 const services = [
   {
-    title: "Standard Cleaning",
-    description: "Routine home cleaning for kitchens, bathrooms, bedrooms, living areas, dusting, floors, and surfaces.",
-    price: "Starting at $120",
+    icon: <Home />,
+    title: "Home Cleaning",
+    text: "Reliable standard cleaning for kitchens, bathrooms, bedrooms, living areas, dusting, floors, and surfaces.",
   },
   {
+    icon: <Sparkles />,
     title: "Deep Cleaning",
-    description: "A more detailed reset for homes that need extra time, buildup removal, baseboards, and detailed rooms.",
-    price: "Starting at $220",
+    text: "A detailed reset for homes that need extra care, buildup removal, baseboards, fixtures, and harder-to-reach areas.",
   },
   {
+    icon: <CalendarCheck />,
+    title: "Recurring Services",
+    text: "Weekly, biweekly, or monthly cleaning plans so your home stays fresh without constant scheduling stress.",
+  },
+  {
+    icon: <Building2 />,
     title: "Move-In / Move-Out",
-    description: "Empty-home cleaning for apartments, houses, rentals, and move transitions.",
-    price: "Quote Required",
+    text: "Empty-home cleaning for apartments, rentals, and houses before or after a move.",
   },
-  {
-    title: "Recurring Cleaning",
-    description: "Weekly, biweekly, or monthly cleaning with a preferred cleaner when available.",
-    price: "Custom Plan",
-  },
+];
+
+const checklist = [
+  "Kitchen counters, sink, stovetop, and appliance exteriors",
+  "Bathroom toilets, tubs, showers, mirrors, and fixtures",
+  "Bedroom and living area dusting, surfaces, and floors",
+  "Trash removal and final walkthrough touch-ups",
 ];
 
 const reviews = [
   {
     name: "Jessica T.",
-    text: "Maria did an amazing job. The kitchen and bathrooms looked brand new. I requested her again for next month.",
-  },
-  {
-    name: "David L.",
-    text: "The process was easy. I sent what I needed, got matched with a cleaner, and everything was handled quickly.",
+    text: "GeMas Cleaning made my home feel brand new. The bathrooms and kitchen looked amazing.",
   },
   {
     name: "Monica S.",
-    text: "I liked being able to request a specific cleaner. Ana was kind, on time, and very thorough.",
+    text: "Professional, friendly, and very detailed. I would absolutely book again.",
+  },
+  {
+    name: "David L.",
+    text: "Easy communication and great work. The house felt fresh and clean when they finished.",
   },
 ];
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [selectedCleaner, setSelectedCleaner] = useState("Match me with the best cleaner");
-  const [filter, setFilter] = useState("All");
-
-  const filteredCleaners = useMemo(() => {
-    if (filter === "All") return cleaners;
-    return cleaners.filter((cleaner) => cleaner.services.includes(filter));
-  }, [filter]);
 
   const scrollTo = (id) => {
     const element = document.getElementById(id);
@@ -111,31 +74,28 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-stone-50 text-slate-900">
-      <header className="sticky top-0 z-50 border-b border-stone-200 bg-white/90 backdrop-blur">
+    <div className="min-h-screen bg-[#f7f4ec] text-[#0f2f22]">
+      <header className="sticky top-0 z-50 border-b border-[#d8d1bd] bg-[#fbfaf5]/95 backdrop-blur">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4">
           <button onClick={() => scrollTo("home")} className="flex items-center gap-3">
-            <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-emerald-700 text-white shadow-sm">
+            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#06452f] text-white shadow-sm">
               <Sparkles className="h-6 w-6" />
             </div>
             <div className="text-left">
-              <p className="text-lg font-bold tracking-tight">GeMas Cleaning</p>
-              <p className="text-xs text-slate-500">Trusted local cleaner network</p>
+              <p className="text-xl font-black tracking-tight">GeMas Cleaning</p>
+              <p className="text-xs tracking-[0.18em] text-[#5e744f]">TRUSTED. LOCAL. RELIABLE.</p>
             </div>
           </button>
 
-          <nav className="hidden items-center gap-7 text-sm font-medium text-slate-700 md:flex">
-            <button onClick={() => scrollTo("cleaners")} className="hover:text-emerald-700">Cleaners</button>
-            <button onClick={() => scrollTo("services")} className="hover:text-emerald-700">Services</button>
-            <button onClick={() => scrollTo("how-it-works")} className="hover:text-emerald-700">How It Works</button>
-            <button onClick={() => scrollTo("signup")} className="hover:text-emerald-700">Cleaner Sign Up</button>
+          <nav className="hidden items-center gap-7 text-sm font-bold text-[#254535] md:flex">
+            <button onClick={() => scrollTo("services")} className="hover:text-[#0b6b47]">Services</button>
+            <button onClick={() => scrollTo("about")} className="hover:text-[#0b6b47]">About</button>
+            <button onClick={() => scrollTo("reviews")} className="hover:text-[#0b6b47]">Reviews</button>
+            <button onClick={() => scrollTo("quote")} className="hover:text-[#0b6b47]">Request Quote</button>
           </nav>
 
-          <div className="hidden gap-3 md:flex">
-            <button onClick={() => scrollTo("request")} className="rounded-full border border-emerald-700 px-5 py-2 text-sm font-semibold text-emerald-800 hover:bg-emerald-50">
-              Request Cleaning
-            </button>
-            <a href="tel:+15035550125" className="rounded-full bg-emerald-700 px-5 py-2 text-sm font-semibold text-white shadow-sm hover:bg-emerald-800">
+          <div className="hidden items-center gap-3 md:flex">
+            <a href="tel:+15035550198" className="rounded-full bg-[#06452f] px-6 py-3 text-sm font-black text-white shadow-lg shadow-[#06452f]/10 hover:bg-[#083823]">
               Call Now
             </a>
           </div>
@@ -146,13 +106,12 @@ function App() {
         </div>
 
         {menuOpen && (
-          <div className="border-t border-stone-200 bg-white px-5 py-4 md:hidden">
-            <div className="grid gap-3 text-sm font-medium">
-              <button onClick={() => scrollTo("cleaners")} className="text-left">Cleaners</button>
+          <div className="border-t border-[#d8d1bd] bg-[#fbfaf5] px-5 py-4 md:hidden">
+            <div className="grid gap-3 text-sm font-bold">
               <button onClick={() => scrollTo("services")} className="text-left">Services</button>
-              <button onClick={() => scrollTo("how-it-works")} className="text-left">How It Works</button>
-              <button onClick={() => scrollTo("signup")} className="text-left">Cleaner Sign Up</button>
-              <button onClick={() => scrollTo("request")} className="rounded-full bg-emerald-700 px-5 py-3 font-semibold text-white">Request Cleaning</button>
+              <button onClick={() => scrollTo("about")} className="text-left">About</button>
+              <button onClick={() => scrollTo("reviews")} className="text-left">Reviews</button>
+              <button onClick={() => scrollTo("quote")} className="rounded-full bg-[#06452f] px-5 py-3 text-white">Request Quote</button>
             </div>
           </div>
         )}
@@ -160,264 +119,206 @@ function App() {
 
       <main id="home">
         <section className="relative overflow-hidden">
-          <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_left,_rgba(16,185,129,0.18),_transparent_35%),radial-gradient(circle_at_bottom_right,_rgba(20,184,166,0.14),_transparent_35%)]" />
-          <div className="mx-auto grid max-w-7xl items-center gap-12 px-5 py-20 lg:grid-cols-2 lg:py-28">
+          <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_left,_rgba(87,117,61,0.20),_transparent_34%),radial-gradient(circle_at_bottom_right,_rgba(6,69,47,0.18),_transparent_40%)]" />
+          <div className="absolute -bottom-32 left-0 right-0 -z-10 h-72 rounded-[100%_100%_0_0] bg-[#06452f]" />
+          <div className="mx-auto grid max-w-7xl items-center gap-12 px-5 py-20 lg:grid-cols-[1.05fr_0.95fr] lg:py-28">
             <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-              <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-white px-4 py-2 text-sm font-medium text-emerald-800 shadow-sm">
-                <ShieldCheck className="h-4 w-4" /> Local cleaners. Simple matching. Less headache.
+              <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#c8d6b8] bg-white/80 px-4 py-2 text-sm font-bold text-[#06452f] shadow-sm">
+                <ShieldCheck className="h-4 w-4" /> Portland-area cleaning with care and detail
               </div>
-              <h1 className="max-w-2xl text-5xl font-black tracking-tight text-slate-950 sm:text-6xl">
-                Find a trusted local cleaner without the back-and-forth.
+              <h1 className="max-w-3xl text-5xl font-black tracking-tight text-[#08291c] sm:text-6xl lg:text-7xl">
+                A cleaner home, a better life.
               </h1>
-              <p className="mt-6 max-w-xl text-lg leading-8 text-slate-600">
-                GeMas Cleaning helps customers request home cleaning and connect with reliable local cleaners. Choose a specific cleaner or let us match you with the best available person for the job.
+              <p className="mt-6 max-w-2xl text-lg leading-8 text-[#405347]">
+                GeMas Cleaning provides trusted local home cleaning, deep cleaning, move-in/move-out cleaning, and recurring services with a professional, personal touch.
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <button onClick={() => scrollTo("request")} className="rounded-full bg-emerald-700 px-7 py-4 text-base font-bold text-white shadow-lg shadow-emerald-900/10 hover:bg-emerald-800">
-                  Request Cleaning
+                <button onClick={() => scrollTo("quote")} className="rounded-full bg-[#06452f] px-8 py-4 text-base font-black text-white shadow-xl shadow-[#06452f]/15 hover:bg-[#083823]">
+                  Request a Free Quote
                 </button>
-                <button onClick={() => scrollTo("cleaners")} className="rounded-full border border-slate-300 bg-white px-7 py-4 text-base font-bold text-slate-800 hover:bg-stone-100">
-                  View Cleaners
-                </button>
+                <a href="tel:+15035550198" className="rounded-full border border-[#9dac82] bg-white/80 px-8 py-4 text-center text-base font-black text-[#06452f] hover:bg-white">
+                  Call (503) 555-0198
+                </a>
               </div>
-              <div className="mt-8 grid max-w-xl grid-cols-3 gap-4 text-center">
-                <div className="rounded-2xl bg-white p-4 shadow-sm">
-                  <p className="text-2xl font-black text-emerald-700">4.8+</p>
-                  <p className="text-xs text-slate-500">Avg rating</p>
-                </div>
-                <div className="rounded-2xl bg-white p-4 shadow-sm">
-                  <p className="text-2xl font-black text-emerald-700">3</p>
-                  <p className="text-xs text-slate-500">Local cleaners</p>
-                </div>
-                <div className="rounded-2xl bg-white p-4 shadow-sm">
-                  <p className="text-2xl font-black text-emerald-700">24hr</p>
-                  <p className="text-xs text-slate-500">Request reply</p>
-                </div>
+
+              <div className="mt-10 grid max-w-2xl gap-4 sm:grid-cols-3">
+                <Stat value="4.9" label="Customer rating" />
+                <Stat value="24hr" label="Quote response" />
+                <Stat value="PDX" label="Local service" />
               </div>
             </motion.div>
 
             <motion.div initial={{ opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.6, delay: 0.1 }} className="relative">
-              <div className="rounded-[2rem] bg-white p-5 shadow-2xl shadow-slate-900/10">
-                <div className="rounded-[1.5rem] bg-emerald-700 p-6 text-white">
+              <div className="rounded-[2rem] border border-[#d8d1bd] bg-[#fbfaf5] p-6 shadow-2xl shadow-[#08291c]/10">
+                <div className="rounded-[1.7rem] bg-[#06452f] p-8 text-white">
                   <div className="flex items-start justify-between gap-4">
                     <div>
-                      <p className="text-sm font-semibold text-emerald-100">Featured Cleaner</p>
-                      <h2 className="mt-2 text-3xl font-black">Maria R.</h2>
+                      <p className="text-sm font-bold uppercase tracking-[0.28em] text-[#b6ca94]">Owner & Operator</p>
+                      <h2 className="mt-3 text-4xl font-black">Heidy Lopez</h2>
                     </div>
-                    <div className="rounded-full bg-white/15 px-3 py-1 text-sm font-bold">Most Requested</div>
+                    <Leaf className="h-10 w-10 text-[#b6ca94]" />
                   </div>
-                  <div className="mt-6 flex items-center gap-2">
-                    {[...Array(5)].map((_, i) => <Star key={i} className="h-5 w-5 fill-current" />)}
-                    <span className="ml-2 font-bold">4.9</span>
-                    <span className="text-emerald-100">28 reviews</span>
-                  </div>
-                  <p className="mt-5 leading-7 text-emerald-50">
-                    Known for detailed kitchens, bathrooms, and dependable recurring cleanings.
+                  <p className="mt-6 text-lg leading-8 text-[#edf5e6]">
+                    Careful, dependable cleaning for homes that deserve a fresh, peaceful reset.
                   </p>
                 </div>
                 <div className="grid gap-3 p-5">
-                  <InfoRow icon={<Languages />} label="Languages" value="Spanish / Basic English" />
-                  <InfoRow icon={<MapPin />} label="Areas" value="Portland, Beaverton, Hillsboro" />
-                  <InfoRow icon={<CalendarCheck />} label="Availability" value="Open this week" />
+                  <ContactLine icon={<Phone />} label="Phone" value="(503) 555-0198" />
+                  <ContactLine icon={<Mail />} label="Email" value="heidylopez@gemascleaning.com" />
+                  <ContactLine icon={<MapPin />} label="Location" value="Portland, Oregon" />
                 </div>
               </div>
             </motion.div>
           </div>
         </section>
 
-        <section id="how-it-works" className="border-y border-stone-200 bg-white py-16">
-          <div className="mx-auto max-w-7xl px-5">
-            <SectionHeading eyebrow="Simple process" title="How GeMas Cleaning works" description="Start manual and controlled. Customers request, cleaners confirm, and you manage the match until the business is ready for automation." />
-            <div className="mt-10 grid gap-5 md:grid-cols-3">
-              <StepCard icon={<ClipboardList />} title="1. Customer sends request" text="The customer shares the home size, cleaning type, preferred date, location, and any special notes." />
-              <StepCard icon={<Users />} title="2. We match or confirm" text="They can request a specific cleaner or ask to be matched with the best available cleaner." />
-              <StepCard icon={<CheckCircle2 />} title="3. Cleaner completes job" text="The cleaner confirms the job, completes the cleaning, and the customer can leave a review." />
-            </div>
-          </div>
-        </section>
-
-        <section id="cleaners" className="py-20">
-          <div className="mx-auto max-w-7xl px-5">
-            <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
-              <SectionHeading eyebrow="Cleaner directory" title="Request a trusted cleaner" description="Cleaner profiles help reputation grow naturally while you stay in control of booking and dispatch." compact />
-              <div className="flex items-center gap-2 overflow-x-auto rounded-full bg-white p-2 shadow-sm">
-                {["All", "Standard Cleaning", "Deep Cleaning", "Move-Out", "Recurring Cleaning"].map((item) => (
-                  <button key={item} onClick={() => setFilter(item)} className={`whitespace-nowrap rounded-full px-4 py-2 text-sm font-semibold ${filter === item ? "bg-emerald-700 text-white" : "text-slate-600 hover:bg-stone-100"}`}>
-                    {item}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            <div className="mt-10 grid gap-6 lg:grid-cols-3">
-              {filteredCleaners.map((cleaner) => (
-                <CleanerCard key={cleaner.name} cleaner={cleaner} onRequest={() => { setSelectedCleaner(cleaner.name); scrollTo("request"); }} />
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section id="services" className="bg-slate-950 py-20 text-white">
-          <div className="mx-auto max-w-7xl px-5">
-            <SectionHeading eyebrow="Cleaning services" title="Services customers can request" description="Keep the services clear and simple. Exact pricing can be confirmed after reviewing the request." dark />
-            <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+        <section id="services" className="bg-[#06452f] px-5 py-20 text-white">
+          <div className="mx-auto max-w-7xl">
+            <SectionHeading eyebrow="Our Services" title="Cleaning services for every season of home" description="Choose the cleaning service that fits your home, your schedule, and the level of detail you need." dark />
+            <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
               {services.map((service) => (
-                <div key={service.title} className="rounded-3xl border border-white/10 bg-white/5 p-6">
-                  <Home className="h-7 w-7 text-emerald-300" />
-                  <h3 className="mt-5 text-xl font-black">{service.title}</h3>
-                  <p className="mt-3 text-sm leading-6 text-slate-300">{service.description}</p>
-                  <p className="mt-5 font-bold text-emerald-300">{service.price}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="bg-white py-20">
-          <div className="mx-auto max-w-7xl px-5">
-            <SectionHeading eyebrow="Reviews" title="Cleaner reputation that grows over time" description="Top cleaners can become more requested through great work, repeat customers, and strong reviews." />
-            <div className="mt-10 grid gap-6 md:grid-cols-3">
-              {reviews.map((review) => (
-                <div key={review.name} className="rounded-3xl border border-stone-200 bg-stone-50 p-6">
-                  <div className="flex gap-1 text-amber-500">
-                    {[...Array(5)].map((_, i) => <Star key={i} className="h-4 w-4 fill-current" />)}
+                <div key={service.title} className="rounded-[2rem] border border-white/10 bg-white/8 p-7 shadow-xl shadow-black/10">
+                  <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#b6ca94] text-[#06452f]">
+                    {React.cloneElement(service.icon, { className: "h-7 w-7" })}
                   </div>
-                  <p className="mt-5 leading-7 text-slate-700">“{review.text}”</p>
-                  <p className="mt-5 font-bold">{review.name}</p>
+                  <h3 className="mt-6 text-2xl font-black">{service.title}</h3>
+                  <p className="mt-4 leading-7 text-[#e7efe0]">{service.text}</p>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        <section id="request" className="py-20">
-          <div className="mx-auto grid max-w-7xl gap-8 px-5 lg:grid-cols-[0.9fr_1.1fr]">
-            <div className="rounded-[2rem] bg-emerald-700 p-8 text-white lg:p-10">
-              <p className="text-sm font-bold uppercase tracking-[0.25em] text-emerald-100">Request cleaning</p>
-              <h2 className="mt-4 text-4xl font-black tracking-tight">Tell us what you need cleaned.</h2>
-              <p className="mt-5 leading-8 text-emerald-50">
-                This form is designed for the low-headache version. The customer sends details, then you confirm the cleaner, time, and final price manually.
+        <section id="about" className="px-5 py-20">
+          <div className="mx-auto grid max-w-7xl items-center gap-10 lg:grid-cols-2">
+            <div className="rounded-[2rem] border border-[#d8d1bd] bg-white p-8 shadow-xl shadow-[#08291c]/5">
+              <p className="text-sm font-black uppercase tracking-[0.28em] text-[#5e744f]">Why GeMas Cleaning</p>
+              <h2 className="mt-4 text-4xl font-black tracking-tight text-[#08291c]">Trusted. Local. Reliable.</h2>
+              <p className="mt-5 text-lg leading-8 text-[#405347]">
+                GeMas Cleaning is built around simple communication, dependable service, and detailed cleaning. Whether you need a one-time deep clean or recurring help, the goal is to make your home feel lighter, fresher, and easier to enjoy.
               </p>
               <div className="mt-8 grid gap-4">
-                <TrustLine text="Choose a cleaner or request the best match" />
-                <TrustLine text="Simple details are easier for cleaners to understand" />
-                <TrustLine text="Manual confirmation helps avoid scheduling problems" />
+                <Feature icon={<ShieldCheck />} title="Trusted service" text="Clear communication, respectful home care, and dependable follow-through." />
+                <Feature icon={<Clock />} title="Flexible scheduling" text="Request the time and service you need, then confirm the best available appointment." />
+                <Feature icon={<HeartHandshake />} title="Personal touch" text="A local business feel with care, detail, and pride in every cleaning." />
               </div>
             </div>
 
-            <form className="rounded-[2rem] border border-stone-200 bg-white p-6 shadow-xl shadow-slate-900/5 lg:p-8" onSubmit={(e) => e.preventDefault()}>
+            <div className="rounded-[2rem] bg-[#ede7d8] p-8">
+              <div className="rounded-[1.7rem] bg-[#fbfaf5] p-7 shadow-lg shadow-[#08291c]/5">
+                <div className="flex items-center gap-3">
+                  <Bath className="h-8 w-8 text-[#06452f]" />
+                  <h3 className="text-2xl font-black">What a cleaning can include</h3>
+                </div>
+                <div className="mt-7 grid gap-4">
+                  {checklist.map((item) => (
+                    <p key={item} className="flex gap-3 leading-7 text-[#405347]">
+                      <CheckCircle2 className="mt-1 h-5 w-5 shrink-0 text-[#0b6b47]" />
+                      {item}
+                    </p>
+                  ))}
+                </div>
+                <p className="mt-7 rounded-2xl bg-[#f7f4ec] p-5 text-sm leading-6 text-[#405347]">
+                  Final service details and pricing can be confirmed after reviewing the home size, condition, location, and cleaning needs.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="reviews" className="bg-[#fbfaf5] px-5 py-20">
+          <div className="mx-auto max-w-7xl">
+            <SectionHeading eyebrow="Customer Reviews" title="Homes cleaned with care" description="A professional look and reputation-focused website helps new customers feel comfortable reaching out." />
+            <div className="mt-12 grid gap-6 md:grid-cols-3">
+              {reviews.map((review) => (
+                <div key={review.name} className="rounded-[2rem] border border-[#d8d1bd] bg-white p-7 shadow-sm">
+                  <div className="flex gap-1 text-[#5e744f]">
+                    {[...Array(5)].map((_, i) => <Star key={i} className="h-5 w-5 fill-current" />)}
+                  </div>
+                  <p className="mt-5 leading-7 text-[#405347]">“{review.text}”</p>
+                  <p className="mt-6 font-black text-[#08291c]">{review.name}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="quote" className="px-5 py-20">
+          <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.9fr_1.1fr]">
+            <div className="rounded-[2rem] bg-[#06452f] p-8 text-white lg:p-10">
+              <p className="text-sm font-black uppercase tracking-[0.28em] text-[#b6ca94]">Request a quote</p>
+              <h2 className="mt-4 text-4xl font-black tracking-tight">Ready for a cleaner home?</h2>
+              <p className="mt-5 text-lg leading-8 text-[#edf5e6]">
+                Send your cleaning request and GeMas Cleaning will follow up to confirm the details, schedule, and quote.
+              </p>
+              <div className="mt-8 grid gap-4">
+                <QuotePoint text="Serving Portland, Oregon and nearby areas" />
+                <QuotePoint text="Home, deep, recurring, and move cleaning" />
+                <QuotePoint text="Friendly quote process before booking" />
+              </div>
+            </div>
+
+            <form className="rounded-[2rem] border border-[#d8d1bd] bg-white p-6 shadow-xl shadow-[#08291c]/5 lg:p-8" onSubmit={(e) => e.preventDefault()}>
               <div className="grid gap-5 md:grid-cols-2">
                 <Field label="Full Name" placeholder="Your name" />
-                <Field label="Phone Number" placeholder="(503) 555-0125" />
+                <Field label="Phone Number" placeholder="(503) 555-0198" />
                 <Field label="Email" placeholder="you@example.com" type="email" />
                 <Field label="ZIP Code" placeholder="97201" />
-                <label className="md:col-span-2">
-                  <span className="text-sm font-bold text-slate-700">Cleaner Preference</span>
-                  <select value={selectedCleaner} onChange={(e) => setSelectedCleaner(e.target.value)} className="mt-2 w-full rounded-2xl border border-stone-300 bg-white px-4 py-3 outline-none focus:border-emerald-600">
-                    <option>Match me with the best cleaner</option>
-                    {cleaners.map((cleaner) => <option key={cleaner.name}>{cleaner.name}</option>)}
-                  </select>
-                </label>
                 <label>
-                  <span className="text-sm font-bold text-slate-700">Cleaning Type</span>
-                  <select className="mt-2 w-full rounded-2xl border border-stone-300 bg-white px-4 py-3 outline-none focus:border-emerald-600">
-                    <option>Standard Cleaning</option>
+                  <span className="text-sm font-black text-[#254535]">Cleaning Type</span>
+                  <select className="mt-2 w-full rounded-2xl border border-[#d8d1bd] bg-white px-4 py-3 outline-none focus:border-[#06452f]">
+                    <option>Home Cleaning</option>
                     <option>Deep Cleaning</option>
+                    <option>Recurring Services</option>
                     <option>Move-In / Move-Out</option>
-                    <option>Recurring Cleaning</option>
                   </select>
                 </label>
                 <Field label="Preferred Date" type="date" />
                 <label className="md:col-span-2">
-                  <span className="text-sm font-bold text-slate-700">Job Details</span>
-                  <textarea className="mt-2 min-h-32 w-full rounded-2xl border border-stone-300 px-4 py-3 outline-none focus:border-emerald-600" placeholder="Example: 2 bedrooms, 2 bathrooms, kitchen, living room. Please focus on bathrooms and floors. We have one dog." />
+                  <span className="text-sm font-black text-[#254535]">Cleaning Details</span>
+                  <textarea className="mt-2 min-h-36 w-full rounded-2xl border border-[#d8d1bd] px-4 py-3 outline-none focus:border-[#06452f]" placeholder="Example: 3 bedrooms, 2 bathrooms, kitchen, living room. Please focus on bathrooms, floors, and kitchen." />
                 </label>
               </div>
-              <button className="mt-6 w-full rounded-full bg-emerald-700 px-7 py-4 text-base font-black text-white hover:bg-emerald-800">
-                Submit Cleaning Request
+              <button className="mt-6 w-full rounded-full bg-[#06452f] px-7 py-4 text-base font-black text-white hover:bg-[#083823]">
+                Submit Quote Request
               </button>
-              <p className="mt-4 text-center text-xs text-slate-500">
-                Demo form: connect this to Formspree, Netlify Forms, Supabase, or your backend when ready.
+              <p className="mt-4 text-center text-xs text-[#5f6f63]">
+                Demo form: connect this to Formspree or a backend when ready.
               </p>
-            </form>
-          </div>
-        </section>
-
-        <section id="signup" className="bg-white py-20">
-          <div className="mx-auto grid max-w-7xl gap-8 px-5 lg:grid-cols-2">
-            <div>
-              <SectionHeading eyebrow="Cleaner sign up" title="Let local cleaners apply to join" description="Start with basic applications. You can approve cleaners manually before they appear on the website." compact />
-              <div className="mt-8 grid gap-4">
-                <FeatureLine icon={<BadgeCheck />} title="Approved profiles only" text="You decide who appears in the public cleaner directory." />
-                <FeatureLine icon={<Languages />} title="Language-friendly details" text="Add languages spoken so customers and cleaners can communicate better." />
-                <FeatureLine icon={<HeartHandshake />} title="Reputation over time" text="Reviews and badges help the best cleaners earn more requests." />
-              </div>
-            </div>
-
-            <form className="rounded-[2rem] border border-stone-200 bg-stone-50 p-6 lg:p-8" onSubmit={(e) => e.preventDefault()}>
-              <div className="grid gap-5 md:grid-cols-2">
-                <Field label="Cleaner Name" placeholder="Full name" />
-                <Field label="Phone Number" placeholder="(503) 555-0125" />
-                <Field label="Languages Spoken" placeholder="Spanish, English, etc." />
-                <Field label="Service Areas" placeholder="Portland, Beaverton..." />
-                <label>
-                  <span className="text-sm font-bold text-slate-700">Experience</span>
-                  <select className="mt-2 w-full rounded-2xl border border-stone-300 bg-white px-4 py-3 outline-none focus:border-emerald-600">
-                    <option>Less than 1 year</option>
-                    <option>1–2 years</option>
-                    <option>3–5 years</option>
-                    <option>5+ years</option>
-                  </select>
-                </label>
-                <label>
-                  <span className="text-sm font-bold text-slate-700">Transportation</span>
-                  <select className="mt-2 w-full rounded-2xl border border-stone-300 bg-white px-4 py-3 outline-none focus:border-emerald-600">
-                    <option>Yes, I have transportation</option>
-                    <option>No, I need nearby jobs</option>
-                  </select>
-                </label>
-                <label className="md:col-span-2">
-                  <span className="text-sm font-bold text-slate-700">Services You Can Do</span>
-                  <textarea className="mt-2 min-h-28 w-full rounded-2xl border border-stone-300 bg-white px-4 py-3 outline-none focus:border-emerald-600" placeholder="Example: standard cleaning, deep cleaning, move-out cleaning, apartments, houses..." />
-                </label>
-              </div>
-              <button className="mt-6 w-full rounded-full bg-slate-950 px-7 py-4 text-base font-black text-white hover:bg-slate-800">
-                Apply to Join GeMas Cleaning
-              </button>
             </form>
           </div>
         </section>
       </main>
 
-      <footer className="border-t border-stone-200 bg-slate-950 px-5 py-12 text-white">
+      <footer className="bg-[#08291c] px-5 py-12 text-white">
         <div className="mx-auto grid max-w-7xl gap-8 md:grid-cols-4">
           <div className="md:col-span-2">
             <div className="flex items-center gap-3">
-              <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-emerald-600"><Sparkles className="h-5 w-5" /></div>
+              <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#b6ca94] text-[#06452f]"><Sparkles className="h-6 w-6" /></div>
               <div>
-                <p className="font-black">GeMas Cleaning</p>
-                <p className="text-sm text-slate-400">Trusted local cleaner network</p>
+                <p className="text-xl font-black">GeMas Cleaning</p>
+                <p className="text-xs tracking-[0.18em] text-[#b6ca94]">TRUSTED. LOCAL. RELIABLE.</p>
               </div>
             </div>
-            <p className="mt-5 max-w-md text-sm leading-7 text-slate-400">
-              A simple way for customers to request local cleaning help and for reliable cleaners to build reputation through great service.
+            <p className="mt-5 max-w-md text-sm leading-7 text-[#dce7d2]">
+              Professional local cleaning for homes, deep cleans, move cleanings, and recurring service.
             </p>
           </div>
           <div>
-            <p className="font-bold">Contact</p>
-            <div className="mt-4 grid gap-3 text-sm text-slate-400">
-              <p className="flex items-center gap-2"><Phone className="h-4 w-4" /> (503) 555-0125</p>
-              <p className="flex items-center gap-2"><Mail className="h-4 w-4" /> hello@gemascleaning.com</p>
-              <p className="flex items-center gap-2"><MapPin className="h-4 w-4" /> Portland Metro Area</p>
+            <p className="font-black">Contact</p>
+            <div className="mt-4 grid gap-3 text-sm text-[#dce7d2]">
+              <p className="flex items-center gap-2"><Phone className="h-4 w-4" /> (503) 555-0198</p>
+              <p className="flex items-center gap-2"><Mail className="h-4 w-4" /> heidylopez@gemascleaning.com</p>
+              <p className="flex items-center gap-2"><MapPin className="h-4 w-4" /> Portland, Oregon</p>
             </div>
           </div>
           <div>
-            <p className="font-bold">Next Build Steps</p>
-            <div className="mt-4 grid gap-2 text-sm text-slate-400">
-              <p>Connect forms</p>
-              <p>Add real cleaner photos</p>
-              <p>Add service areas</p>
-              <p>Add admin dashboard later</p>
+            <p className="font-black">Services</p>
+            <div className="mt-4 grid gap-2 text-sm text-[#dce7d2]">
+              <p>Home Cleaning</p>
+              <p>Deep Cleaning</p>
+              <p>Recurring Services</p>
+              <p>Move-In / Move-Out</p>
             </div>
           </div>
         </div>
@@ -426,94 +327,61 @@ function App() {
   );
 }
 
-function SectionHeading({ eyebrow, title, description, dark = false, compact = false }) {
+function SectionHeading({ eyebrow, title, description, dark = false }) {
   return (
-    <div className={compact ? "max-w-2xl" : "mx-auto max-w-3xl text-center"}>
-      <p className={`text-sm font-black uppercase tracking-[0.25em] ${dark ? "text-emerald-300" : "text-emerald-700"}`}>{eyebrow}</p>
-      <h2 className={`mt-3 text-4xl font-black tracking-tight ${dark ? "text-white" : "text-slate-950"}`}>{title}</h2>
-      <p className={`mt-4 text-lg leading-8 ${dark ? "text-slate-300" : "text-slate-600"}`}>{description}</p>
+    <div className="mx-auto max-w-3xl text-center">
+      <p className={`text-sm font-black uppercase tracking-[0.28em] ${dark ? "text-[#b6ca94]" : "text-[#5e744f]"}`}>{eyebrow}</p>
+      <h2 className={`mt-3 text-4xl font-black tracking-tight ${dark ? "text-white" : "text-[#08291c]"}`}>{title}</h2>
+      <p className={`mt-4 text-lg leading-8 ${dark ? "text-[#e7efe0]" : "text-[#405347]"}`}>{description}</p>
     </div>
   );
 }
 
-function InfoRow({ icon, label, value }) {
+function Stat({ value, label }) {
   return (
-    <div className="flex items-center gap-3 rounded-2xl bg-stone-50 p-4">
-      <div className="text-emerald-700">{React.cloneElement(icon, { className: "h-5 w-5" })}</div>
+    <div className="rounded-3xl border border-[#d8d1bd] bg-white/80 p-5 text-center shadow-sm">
+      <p className="text-3xl font-black text-[#06452f]">{value}</p>
+      <p className="mt-1 text-sm font-semibold text-[#405347]">{label}</p>
+    </div>
+  );
+}
+
+function ContactLine({ icon, label, value }) {
+  return (
+    <div className="flex items-center gap-4 rounded-2xl bg-[#f7f4ec] p-4">
+      <div className="flex h-11 w-11 items-center justify-center rounded-full bg-[#06452f] text-white">{React.cloneElement(icon, { className: "h-5 w-5" })}</div>
       <div>
-        <p className="text-xs font-bold uppercase tracking-wider text-slate-400">{label}</p>
-        <p className="text-sm font-semibold text-slate-800">{value}</p>
+        <p className="text-xs font-black uppercase tracking-wider text-[#5e744f]">{label}</p>
+        <p className="font-bold text-[#08291c]">{value}</p>
       </div>
     </div>
   );
 }
 
-function StepCard({ icon, title, text }) {
+function Feature({ icon, title, text }) {
   return (
-    <div className="rounded-3xl border border-stone-200 bg-stone-50 p-7">
-      <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-100 text-emerald-800">{React.cloneElement(icon, { className: "h-6 w-6" })}</div>
-      <h3 className="mt-5 text-xl font-black">{title}</h3>
-      <p className="mt-3 leading-7 text-slate-600">{text}</p>
+    <div className="flex gap-4 rounded-3xl bg-[#f7f4ec] p-5">
+      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#06452f] text-white">{React.cloneElement(icon, { className: "h-6 w-6" })}</div>
+      <div>
+        <h3 className="font-black text-[#08291c]">{title}</h3>
+        <p className="mt-1 leading-6 text-[#405347]">{text}</p>
+      </div>
     </div>
-  );
-}
-
-function CleanerCard({ cleaner, onRequest }) {
-  return (
-    <motion.div layout className="rounded-[2rem] border border-stone-200 bg-white p-6 shadow-sm">
-      <div className="flex items-start justify-between gap-4">
-        <div className="flex items-center gap-4">
-          <div className="flex h-16 w-16 items-center justify-center rounded-3xl bg-emerald-100 text-xl font-black text-emerald-800">{cleaner.initials}</div>
-          <div>
-            <h3 className="text-2xl font-black">{cleaner.name}</h3>
-            <div className="mt-1 flex items-center gap-1 text-sm text-slate-600">
-              <Star className="h-4 w-4 fill-amber-400 text-amber-400" />
-              <span className="font-bold">{cleaner.rating}</span>
-              <span>({cleaner.reviews} reviews)</span>
-            </div>
-          </div>
-        </div>
-        <span className="rounded-full bg-emerald-50 px-3 py-1 text-xs font-black text-emerald-800">{cleaner.badge}</span>
-      </div>
-      <p className="mt-5 leading-7 text-slate-600">{cleaner.bio}</p>
-      <div className="mt-5 grid gap-3 text-sm">
-        <p className="flex gap-2"><Languages className="h-5 w-5 text-emerald-700" /> {cleaner.languages}</p>
-        <p className="flex gap-2"><MapPin className="h-5 w-5 text-emerald-700" /> {cleaner.areas}</p>
-      </div>
-      <div className="mt-5 flex flex-wrap gap-2">
-        {cleaner.services.map((service) => <span key={service} className="rounded-full bg-stone-100 px-3 py-1 text-xs font-bold text-slate-600">{service}</span>)}
-      </div>
-      <button onClick={onRequest} className="mt-6 w-full rounded-full bg-emerald-700 px-5 py-3 font-black text-white hover:bg-emerald-800">
-        Request {cleaner.name.split(" ")[0]}
-      </button>
-    </motion.div>
   );
 }
 
 function Field({ label, placeholder = "", type = "text" }) {
   return (
     <label>
-      <span className="text-sm font-bold text-slate-700">{label}</span>
-      <input type={type} placeholder={placeholder} className="mt-2 w-full rounded-2xl border border-stone-300 px-4 py-3 outline-none focus:border-emerald-600" />
+      <span className="text-sm font-black text-[#254535]">{label}</span>
+      <input type={type} placeholder={placeholder} className="mt-2 w-full rounded-2xl border border-[#d8d1bd] px-4 py-3 outline-none focus:border-[#06452f]" />
     </label>
   );
 }
 
-function TrustLine({ text }) {
+function QuotePoint({ text }) {
   return (
-    <p className="flex items-center gap-3 text-emerald-50"><CheckCircle2 className="h-5 w-5 text-emerald-200" /> {text}</p>
-  );
-}
-
-function FeatureLine({ icon, title, text }) {
-  return (
-    <div className="flex gap-4 rounded-3xl border border-stone-200 bg-white p-5 shadow-sm">
-      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-emerald-100 text-emerald-800">{React.cloneElement(icon, { className: "h-6 w-6" })}</div>
-      <div>
-        <h3 className="font-black">{title}</h3>
-        <p className="mt-1 leading-6 text-slate-600">{text}</p>
-      </div>
-    </div>
+    <p className="flex items-center gap-3 text-[#edf5e6]"><CheckCircle2 className="h-5 w-5 text-[#b6ca94]" /> {text}</p>
   );
 }
 
