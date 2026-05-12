@@ -64,6 +64,28 @@ const reviews = [
   },
 ];
 
+const beforeAfter = [
+  {
+    title: "Refrigerator Deep Clean",
+    before: "/images/refrigerator-before.jpg",
+    after: "/images/refrigerator-after.jpg",
+    text: "Heavy buildup and stains cleaned into a fresh, bright appliance ready to use.",
+  },
+  {
+    title: "Oven Deep Clean",
+    before: "/images/oven-before.jpg",
+    after: "/images/oven-after.jpg",
+    text: "Grease, residue, and burnt-on buildup reduced for a cleaner oven interior.",
+  },
+];
+
+const gallery = [
+  { src: "/images/kitchen-clean-1.jpg", title: "Kitchen Reset" },
+  { src: "/images/kitchen-clean-2.jpg", title: "Fresh Kitchen Finish" },
+  { src: "/images/bathroom-clean.jpg", title: "Bathroom Detail" },
+  { src: "/images/living-kitchen-clean.jpg", title: "Whole Home Care" },
+];
+
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -89,6 +111,7 @@ function App() {
 
           <nav className="hidden items-center gap-7 text-sm font-bold text-[#254535] md:flex">
             <button onClick={() => scrollTo("services")} className="hover:text-[#0b6b47]">Services</button>
+            <button onClick={() => scrollTo("results")} className="hover:text-[#0b6b47]">Results</button>
             <button onClick={() => scrollTo("about")} className="hover:text-[#0b6b47]">About</button>
             <button onClick={() => scrollTo("reviews")} className="hover:text-[#0b6b47]">Reviews</button>
             <button onClick={() => scrollTo("quote")} className="hover:text-[#0b6b47]">Request Quote</button>
@@ -109,6 +132,7 @@ function App() {
           <div className="border-t border-[#d8d1bd] bg-[#fbfaf5] px-5 py-4 md:hidden">
             <div className="grid gap-3 text-sm font-bold">
               <button onClick={() => scrollTo("services")} className="text-left">Services</button>
+              <button onClick={() => scrollTo("results")} className="text-left">Results</button>
               <button onClick={() => scrollTo("about")} className="text-left">About</button>
               <button onClick={() => scrollTo("reviews")} className="text-left">Reviews</button>
               <button onClick={() => scrollTo("quote")} className="rounded-full bg-[#06452f] px-5 py-3 text-white">Request Quote</button>
@@ -120,6 +144,7 @@ function App() {
       <main id="home">
         <section className="relative overflow-hidden">
           <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_left,_rgba(87,117,61,0.20),_transparent_34%),radial-gradient(circle_at_bottom_right,_rgba(6,69,47,0.18),_transparent_40%)]" />
+          <img src="/images/gemas-logo.png" alt="" className="pointer-events-none absolute right-6 top-20 -z-10 hidden w-[34rem] opacity-[0.06] lg:block" />
           <div className="absolute -bottom-32 left-0 right-0 -z-10 h-72 rounded-[100%_100%_0_0] bg-[#06452f]" />
           <div className="mx-auto grid max-w-7xl items-center gap-12 px-5 py-20 lg:grid-cols-[1.05fr_0.95fr] lg:py-28">
             <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
@@ -189,6 +214,44 @@ function App() {
           </div>
         </section>
 
+        <section id="results" className="bg-[#f7f4ec] px-5 py-20">
+          <div className="mx-auto max-w-7xl">
+            <SectionHeading eyebrow="Real Results" title="Before & after cleaning results" description="From deep appliance cleaning to full-home refreshes, GeMas Cleaning focuses on the details customers notice." />
+
+            <div className="mt-12 grid gap-8 lg:grid-cols-2">
+              {beforeAfter.map((item) => (
+                <div key={item.title} className="overflow-hidden rounded-[2rem] border border-[#d8d1bd] bg-white shadow-xl shadow-[#08291c]/5">
+                  <div className="grid md:grid-cols-2">
+                    <PhotoBlock label="Before" src={item.before} />
+                    <PhotoBlock label="After" src={item.after} />
+                  </div>
+                  <div className="p-7">
+                    <h3 className="text-2xl font-black text-[#08291c]">{item.title}</h3>
+                    <p className="mt-3 leading-7 text-[#405347]">{item.text}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-16">
+              <div className="mx-auto max-w-3xl text-center">
+                <p className="text-sm font-black uppercase tracking-[0.28em] text-[#5e744f]">Work Gallery</p>
+                <h3 className="mt-3 text-3xl font-black tracking-tight text-[#08291c]">Clean spaces, finished with care</h3>
+              </div>
+              <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+                {gallery.map((item) => (
+                  <div key={item.title} className="overflow-hidden rounded-[1.7rem] border border-[#d8d1bd] bg-white shadow-sm">
+                    <img src={item.src} alt={item.title} className="h-56 w-full object-cover" />
+                    <div className="p-4">
+                      <p className="font-black text-[#08291c]">{item.title}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section id="about" className="px-5 py-20">
           <div className="mx-auto grid max-w-7xl items-center gap-10 lg:grid-cols-2">
             <div className="rounded-[2rem] border border-[#d8d1bd] bg-white p-8 shadow-xl shadow-[#08291c]/5">
@@ -222,6 +285,50 @@ function App() {
                   Final service details and pricing can be confirmed after reviewing the home size, condition, location, and cleaning needs.
                 </p>
               </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="bg-[#ede7d8] px-5 py-20">
+          <div className="mx-auto grid max-w-7xl items-center gap-10 lg:grid-cols-2">
+            <div className="grid gap-5 sm:grid-cols-2">
+              <div className="overflow-hidden rounded-[2rem] border border-[#d8d1bd] bg-white shadow-xl shadow-[#08291c]/5">
+                <img src="/images/owners-1.jpg" alt="GeMas Cleaning owner" className="h-[30rem] w-full object-cover" />
+              </div>
+              <div className="overflow-hidden rounded-[2rem] border border-[#d8d1bd] bg-white shadow-xl shadow-[#08291c]/5">
+                <img src="/images/owners-2.jpg" alt="GeMas Cleaning owner" className="h-[30rem] w-full object-cover" />
+              </div>
+            </div>
+            <div>
+              <p className="text-sm font-black uppercase tracking-[0.28em] text-[#5e744f]">Meet the owners</p>
+              <h2 className="mt-4 text-4xl font-black tracking-tight text-[#08291c]">A local cleaning business with a personal touch.</h2>
+              <p className="mt-5 text-lg leading-8 text-[#405347]">
+                GeMas Cleaning is built around dependable work, friendly communication, and pride in every job. When you invite us into your home, our goal is simple: leave it cleaner, calmer, and easier to enjoy.
+              </p>
+              <div className="mt-7 rounded-3xl bg-white p-6 shadow-sm">
+                <p className="font-black text-[#08291c]">Heidy Lopez</p>
+                <p className="mt-1 text-[#405347]">Owner & Operator</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="px-5 py-20">
+          <div className="mx-auto grid max-w-7xl items-center gap-10 lg:grid-cols-[0.95fr_1.05fr]">
+            <div>
+              <p className="text-sm font-black uppercase tracking-[0.28em] text-[#5e744f]">Family & Pet Conscious</p>
+              <h2 className="mt-4 text-4xl font-black tracking-tight text-[#08291c]">Cleaning products chosen with your home in mind.</h2>
+              <p className="mt-5 text-lg leading-8 text-[#405347]">
+                We use products selected with families and pets in mind, and we are happy to discuss product preferences before service for homes with children, pets, or sensitivities.
+              </p>
+              <div className="mt-8 grid gap-4">
+                <Feature icon={<Leaf />} title="Family-conscious choices" text="Product choices can be discussed before service so customers feel comfortable." />
+                <Feature icon={<ShieldCheck />} title="Pet-aware cleaning" text="Tell us about pets in the home so we can plan the cleaning with care." />
+                <Feature icon={<Sparkles />} title="Detailed finish" text="The goal is a fresh, clean home without unnecessary worry." />
+              </div>
+            </div>
+            <div className="overflow-hidden rounded-[2rem] border border-[#d8d1bd] bg-white shadow-xl shadow-[#08291c]/5">
+              <img src="/images/cleaning-products.jpg" alt="Cleaning products used by GeMas Cleaning" className="h-[32rem] w-full object-cover" />
             </div>
           </div>
         </section>
@@ -353,6 +460,17 @@ function ContactLine({ icon, label, value }) {
       <div>
         <p className="text-xs font-black uppercase tracking-wider text-[#5e744f]">{label}</p>
         <p className="font-bold text-[#08291c]">{value}</p>
+      </div>
+    </div>
+  );
+}
+
+function PhotoBlock({ label, src }) {
+  return (
+    <div className="relative min-h-72 bg-[#ede7d8]">
+      <img src={src} alt={`${label} cleaning result`} className="h-72 w-full object-cover" />
+      <div className="absolute left-4 top-4 rounded-full bg-[#06452f] px-4 py-2 text-sm font-black text-white shadow-lg">
+        {label}
       </div>
     </div>
   );
