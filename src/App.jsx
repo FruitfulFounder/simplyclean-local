@@ -17,7 +17,21 @@ import {
   Leaf,
   Clock,
   HeartHandshake,
+  Globe,
 } from "lucide-react";
+
+const business = {
+  name: "Gemasshine",
+  owner: "Heidy Lopez",
+  title: "Owner & Operator",
+  phoneDisplay: "(503) 208-4392",
+  phoneHref: "+15032084392",
+  email: "gemasshine@outlook.com",
+  websiteDisplay: "www.gemasshine.com",
+  websiteHref: "https://www.gemasshine.com",
+  location: "Portland, Oregon",
+  tagline: "A cleaner home, a better life.",
+};
 
 const services = [
   {
@@ -52,7 +66,7 @@ const checklist = [
 const reviews = [
   {
     name: "Jessica T.",
-    text: "GeMas Cleaning made my home feel brand new. The bathrooms and kitchen looked amazing.",
+    text: "Gemasshine made my home feel brand new. The bathrooms and kitchen looked amazing.",
   },
   {
     name: "Monica S.",
@@ -133,8 +147,9 @@ function App() {
             <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#06452f] text-white shadow-sm">
               <Sparkles className="h-6 w-6" />
             </div>
+
             <div className="text-left">
-              <p className="text-xl font-black tracking-tight">GeMas Cleaning</p>
+              <p className="text-xl font-black tracking-tight">{business.name}</p>
               <p className="text-xs tracking-[0.18em] text-[#5e744f]">
                 TRUSTED. LOCAL. RELIABLE.
               </p>
@@ -161,7 +176,7 @@ function App() {
 
           <div className="hidden items-center gap-3 md:flex">
             <a
-              href="tel:+15035550198"
+              href={`tel:${business.phoneHref}`}
               className="rounded-full bg-[#06452f] px-6 py-3 text-sm font-black text-white shadow-lg shadow-[#06452f]/10 hover:bg-[#083823]"
             >
               Call Now
@@ -202,16 +217,19 @@ function App() {
       <main id="home">
         <section className="relative overflow-hidden">
           <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_left,_rgba(87,117,61,0.20),_transparent_34%),radial-gradient(circle_at_bottom_right,_rgba(6,69,47,0.18),_transparent_40%)]" />
+
           <img
             src="/images/gemas-logo.png"
             alt=""
             className="pointer-events-none absolute right-0 top-24 -z-10 hidden w-[38rem] opacity-[0.16] lg:block"
           />
+
           <img
             src="/images/gemas-logo.png"
             alt=""
             className="pointer-events-none absolute bottom-10 left-1/2 -z-10 w-[22rem] -translate-x-1/2 opacity-[0.10] lg:hidden"
           />
+
           <div className="absolute -bottom-32 left-0 right-0 -z-10 h-72 rounded-[100%_100%_0_0] bg-[#06452f]" />
 
           <div className="mx-auto grid max-w-7xl items-center gap-12 px-5 py-20 lg:grid-cols-[1.05fr_0.95fr] lg:py-28">
@@ -225,11 +243,11 @@ function App() {
               </div>
 
               <h1 className="max-w-3xl text-5xl font-black tracking-tight text-[#08291c] sm:text-6xl lg:text-7xl">
-                A cleaner home, a better life.
+                {business.tagline}
               </h1>
 
               <p className="mt-6 max-w-2xl text-lg leading-8 text-[#405347]">
-                GeMas Cleaning provides trusted local home cleaning, deep cleaning, move-in/move-out cleaning, and recurring services with a professional, personal touch.
+                {business.name} provides trusted local home cleaning, deep cleaning, move-in/move-out cleaning, and recurring services with a professional, personal touch.
               </p>
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -239,11 +257,12 @@ function App() {
                 >
                   Request a Free Quote
                 </button>
+
                 <a
-                  href="tel:+15035550198"
+                  href={`tel:${business.phoneHref}`}
                   className="rounded-full border border-[#9dac82] bg-white/80 px-8 py-4 text-center text-base font-black text-[#06452f] hover:bg-white"
                 >
-                  Call (503) 555-0198
+                  Call {business.phoneDisplay}
                 </a>
               </div>
 
@@ -265,9 +284,9 @@ function App() {
                   <div className="flex items-start justify-between gap-4">
                     <div>
                       <p className="text-sm font-bold uppercase tracking-[0.28em] text-[#b6ca94]">
-                        Owner & Operator
+                        {business.title}
                       </p>
-                      <h2 className="mt-3 text-4xl font-black">Heidy Lopez</h2>
+                      <h2 className="mt-3 text-4xl font-black">{business.owner}</h2>
                     </div>
                     <Leaf className="h-10 w-10 text-[#b6ca94]" />
                   </div>
@@ -278,9 +297,10 @@ function App() {
                 </div>
 
                 <div className="grid gap-3 p-5">
-                  <ContactLine icon={<Phone />} label="Phone" value="(503) 555-0198" />
-                  <ContactLine icon={<Mail />} label="Email" value="heidylopez@gemascleaning.com" />
-                  <ContactLine icon={<MapPin />} label="Location" value="Portland, Oregon" />
+                  <ContactLine icon={<Phone />} label="Phone" value={business.phoneDisplay} href={`tel:${business.phoneHref}`} />
+                  <ContactLine icon={<Mail />} label="Email" value={business.email} href={`mailto:${business.email}`} />
+                  <ContactLine icon={<Globe />} label="Website" value={business.websiteDisplay} href={business.websiteHref} />
+                  <ContactLine icon={<MapPin />} label="Location" value={business.location} />
                 </div>
               </div>
             </motion.div>
@@ -318,7 +338,7 @@ function App() {
             <SectionHeading
               eyebrow="Real Results"
               title="Before & after cleaning results"
-              description="From deep appliance cleaning to full-home refreshes, GeMas Cleaning focuses on the details customers notice."
+              description={`From deep appliance cleaning to full-home refreshes, ${business.name} focuses on the details customers notice.`}
             />
 
             <div className="mt-12 grid gap-8 lg:grid-cols-2">
@@ -331,6 +351,7 @@ function App() {
                     <PhotoBlock label="Before" src={item.before} />
                     <PhotoBlock label="After" src={item.after} />
                   </div>
+
                   <div className="p-7">
                     <h3 className="text-2xl font-black text-[#08291c]">{item.title}</h3>
                     <p className="mt-3 leading-7 text-[#405347]">{item.text}</p>
@@ -370,13 +391,15 @@ function App() {
           <div className="mx-auto grid max-w-7xl items-center gap-10 lg:grid-cols-2">
             <div className="rounded-[2rem] border border-[#d8d1bd] bg-white p-8 shadow-xl shadow-[#08291c]/5">
               <p className="text-sm font-black uppercase tracking-[0.28em] text-[#5e744f]">
-                Why GeMas Cleaning
+                Why {business.name}
               </p>
+
               <h2 className="mt-4 text-4xl font-black tracking-tight text-[#08291c]">
                 Trusted. Local. Reliable.
               </h2>
+
               <p className="mt-5 text-lg leading-8 text-[#405347]">
-                GeMas Cleaning is built around simple communication, dependable service, and detailed cleaning. Whether you need a one-time deep clean or recurring help, the goal is to make your home feel lighter, fresher, and easier to enjoy.
+                {business.name} is built around simple communication, dependable service, and detailed cleaning. Whether you need a one-time deep clean or recurring help, the goal is to make your home feel lighter, fresher, and easier to enjoy.
               </p>
 
               <div className="mt-8 grid gap-4">
@@ -428,14 +451,15 @@ function App() {
               <div className="overflow-hidden rounded-[2rem] border border-[#d8d1bd] bg-white shadow-xl shadow-[#08291c]/5">
                 <img
                   src="/images/owners-1.jpg"
-                  alt="GeMas Cleaning owner"
+                  alt={`${business.name} owner`}
                   className="h-[30rem] w-full object-cover"
                 />
               </div>
+
               <div className="overflow-hidden rounded-[2rem] border border-[#d8d1bd] bg-white shadow-xl shadow-[#08291c]/5">
                 <img
                   src="/images/owners-2.jpg"
-                  alt="GeMas Cleaning owner"
+                  alt={`${business.name} owner`}
                   className="h-[30rem] w-full object-cover"
                 />
               </div>
@@ -445,16 +469,18 @@ function App() {
               <p className="text-sm font-black uppercase tracking-[0.28em] text-[#5e744f]">
                 Meet the owners
               </p>
+
               <h2 className="mt-4 text-4xl font-black tracking-tight text-[#08291c]">
                 A local cleaning business with a personal touch.
               </h2>
+
               <p className="mt-5 text-lg leading-8 text-[#405347]">
-                GeMas Cleaning is built around dependable work, friendly communication, and pride in every job. When you invite us into your home, our goal is simple: leave it cleaner, calmer, and easier to enjoy.
+                {business.name} is built around dependable work, friendly communication, and pride in every job. When you invite us into your home, our goal is simple: leave it cleaner, calmer, and easier to enjoy.
               </p>
 
               <div className="mt-7 rounded-3xl bg-white p-6 shadow-sm">
-                <p className="font-black text-[#08291c]">Heidy Lopez</p>
-                <p className="mt-1 text-[#405347]">Owner & Operator</p>
+                <p className="font-black text-[#08291c]">{business.owner}</p>
+                <p className="mt-1 text-[#405347]">{business.title}</p>
               </div>
             </div>
           </div>
@@ -466,9 +492,11 @@ function App() {
               <p className="text-sm font-black uppercase tracking-[0.28em] text-[#5e744f]">
                 Family & Pet Conscious
               </p>
+
               <h2 className="mt-4 text-4xl font-black tracking-tight text-[#08291c]">
                 Cleaning products chosen with your home in mind.
               </h2>
+
               <p className="mt-5 text-lg leading-8 text-[#405347]">
                 We use products selected with families and pets in mind, and we are happy to discuss product preferences before service for homes with children, pets, or sensitivities.
               </p>
@@ -495,7 +523,7 @@ function App() {
             <div className="overflow-hidden rounded-[2rem] border border-[#d8d1bd] bg-white shadow-xl shadow-[#08291c]/5">
               <img
                 src="/images/cleaning-products.jpg"
-                alt="Cleaning products used by GeMas Cleaning"
+                alt={`Cleaning products used by ${business.name}`}
                 className="h-[32rem] w-full object-cover"
               />
             </div>
@@ -521,6 +549,7 @@ function App() {
                       <Star key={i} className="h-5 w-5 fill-current" />
                     ))}
                   </div>
+
                   <p className="mt-5 leading-7 text-[#405347]">“{review.text}”</p>
                   <p className="mt-6 font-black text-[#08291c]">{review.name}</p>
                 </div>
@@ -535,11 +564,13 @@ function App() {
               <p className="text-sm font-black uppercase tracking-[0.28em] text-[#b6ca94]">
                 Request a quote
               </p>
+
               <h2 className="mt-4 text-4xl font-black tracking-tight">
                 Ready for a cleaner home?
               </h2>
+
               <p className="mt-5 text-lg leading-8 text-[#edf5e6]">
-                Send your cleaning request and GeMas Cleaning will follow up to confirm the details, schedule, and quote.
+                Send your cleaning request and {business.name} will follow up to confirm the details, schedule, and quote.
               </p>
 
               <div className="mt-8 grid gap-4">
@@ -555,7 +586,7 @@ function App() {
             >
               <div className="grid gap-5 md:grid-cols-2">
                 <Field label="Full Name" placeholder="Your name" />
-                <Field label="Phone Number" placeholder="(503) 555-0198" />
+                <Field label="Phone Number" placeholder={business.phoneDisplay} />
                 <Field label="Email" placeholder="you@example.com" type="email" />
                 <Field label="ZIP Code" placeholder="97201" />
 
@@ -585,7 +616,7 @@ function App() {
               </button>
 
               <p className="mt-4 text-center text-xs text-[#5f6f63]">
-                Demo form: connect this to Formspree or a backend when ready.
+                Quote requests will be connected to {business.email} when the form is activated.
               </p>
             </form>
           </div>
@@ -599,8 +630,9 @@ function App() {
               <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#b6ca94] text-[#06452f]">
                 <Sparkles className="h-6 w-6" />
               </div>
+
               <div>
-                <p className="text-xl font-black">GeMas Cleaning</p>
+                <p className="text-xl font-black">{business.name}</p>
                 <p className="text-xs tracking-[0.18em] text-[#b6ca94]">
                   TRUSTED. LOCAL. RELIABLE.
                 </p>
@@ -614,26 +646,34 @@ function App() {
 
           <div>
             <p className="font-black">Contact</p>
+
             <div className="mt-4 grid gap-3 text-sm text-[#dce7d2]">
+              <a href={`tel:${business.phoneHref}`} className="flex items-center gap-2 hover:text-white">
+                <Phone className="h-4 w-4" /> {business.phoneDisplay}
+              </a>
+
+              <a href={`mailto:${business.email}`} className="flex items-center gap-2 hover:text-white">
+                <Mail className="h-4 w-4" /> {business.email}
+              </a>
+
+              <a href={business.websiteHref} className="flex items-center gap-2 hover:text-white">
+                <Globe className="h-4 w-4" /> {business.websiteDisplay}
+              </a>
+
               <p className="flex items-center gap-2">
-                <Phone className="h-4 w-4" /> (503) 555-0198
-              </p>
-              <p className="flex items-center gap-2">
-                <Mail className="h-4 w-4" /> heidylopez@gemascleaning.com
-              </p>
-              <p className="flex items-center gap-2">
-                <MapPin className="h-4 w-4" /> Portland, Oregon
+                <MapPin className="h-4 w-4" /> {business.location}
               </p>
             </div>
           </div>
 
           <div>
             <p className="font-black">Services</p>
+
             <div className="mt-4 grid gap-2 text-sm text-[#dce7d2]">
               <p>Home Cleaning</p>
               <p>Deep Cleaning</p>
               <p>Recurring Services</p>
-              <p>Move-In / Move-Out</p>
+              <p>Trusted & Insured</p>
             </div>
           </div>
         </div>
@@ -652,6 +692,7 @@ function SectionHeading({ eyebrow, title, description, dark = false }) {
       >
         {eyebrow}
       </p>
+
       <h2
         className={`mt-3 text-4xl font-black tracking-tight ${
           dark ? "text-white" : "text-[#08291c]"
@@ -659,6 +700,7 @@ function SectionHeading({ eyebrow, title, description, dark = false }) {
       >
         {title}
       </h2>
+
       <p className={`mt-4 text-lg leading-8 ${dark ? "text-[#e7efe0]" : "text-[#405347]"}`}>
         {description}
       </p>
@@ -675,18 +717,29 @@ function Stat({ value, label }) {
   );
 }
 
-function ContactLine({ icon, label, value }) {
-  return (
+function ContactLine({ icon, label, value, href }) {
+  const content = (
     <div className="flex items-center gap-4 rounded-2xl bg-[#f7f4ec] p-4">
       <div className="flex h-11 w-11 items-center justify-center rounded-full bg-[#06452f] text-white">
         {React.cloneElement(icon, { className: "h-5 w-5" })}
       </div>
+
       <div>
         <p className="text-xs font-black uppercase tracking-wider text-[#5e744f]">{label}</p>
         <p className="font-bold text-[#08291c]">{value}</p>
       </div>
     </div>
   );
+
+  if (href) {
+    return (
+      <a href={href} className="block hover:opacity-90">
+        {content}
+      </a>
+    );
+  }
+
+  return content;
 }
 
 function PhotoBlock({ label, src }) {
@@ -706,6 +759,7 @@ function Feature({ icon, title, text }) {
       <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#06452f] text-white">
         {React.cloneElement(icon, { className: "h-6 w-6" })}
       </div>
+
       <div>
         <h3 className="font-black text-[#08291c]">{title}</h3>
         <p className="mt-1 leading-6 text-[#405347]">{text}</p>
