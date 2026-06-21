@@ -124,7 +124,6 @@ const beforeAfter = [
 ];
 
 const gallery = [
-  { src: "/images/kitchen-clean-1.jpg", title: "Kitchen Reset" },
   { src: "/images/kitchen-clean-2.jpg", title: "Fresh Kitchen Finish" },
   { src: "/images/bathroom-clean.jpg", title: "Bathroom Detail" },
   { src: "/images/living-kitchen-clean.jpg", title: "Whole Home Care" },
