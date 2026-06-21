@@ -24,13 +24,22 @@ const business = {
   name: "Gemasshine",
   owner: "Heidy Lopez",
   title: "Owner & Operator",
-   phoneDisplay: "(503) 969-5980",
+  phoneDisplay: "(503) 969-5980",
   phoneHref: "+15039695980",
   email: "gemasshine@outlook.com",
   websiteDisplay: "www.gemasshine.com",
   websiteHref: "https://www.gemasshine.com",
   location: "Portland, Oregon",
   tagline: "A cleaner home, a better life.",
+
+  nextdoorPersonal:
+    "https://nextdoor.com/profile/01BFTqzCQ_GtsqQ-R/?is=feed_author",
+
+  nextdoorBusiness:
+    "https://nextdoor.com/page/cleaning-service-gemaa-vermilion-oh?share_platform=3&utm_campaign=1782057638811&share_action_id=16d75b0d-4004-43d8-a73a-30330cdef49a",
+
+  facebook:
+    "https://www.facebook.com/profile.php?id=61587883242797&mibextid=wwXIfr&rdid=Kv5ou41J8sJHat45&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F14n5EbWdpEW%2F%3Fmibextid%3DwwXIfr%26wa_status_inline%3Dtrue",
 };
 
 const services = [
@@ -134,7 +143,14 @@ function App() {
 
   const scrollTo = (id) => {
     const element = document.getElementById(id);
-    if (element) element.scrollIntoView({ behavior: "smooth", block: "start" });
+
+    if (element) {
+      element.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+
     setMenuOpen(false);
   };
 
@@ -142,13 +158,19 @@ function App() {
     <div className="min-h-screen bg-[#f7f4ec] text-[#0f2f22]">
       <header className="sticky top-0 z-50 border-b border-[#d8d1bd] bg-[#fbfaf5]/95 backdrop-blur">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4">
-          <button onClick={() => scrollTo("home")} className="flex items-center gap-3">
+          <button
+            onClick={() => scrollTo("home")}
+            className="flex items-center gap-3"
+          >
             <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#06452f] text-white shadow-sm">
               <Sparkles className="h-6 w-6" />
             </div>
 
             <div className="text-left">
-              <p className="text-xl font-black tracking-tight">{business.name}</p>
+              <p className="text-xl font-black tracking-tight">
+                {business.name}
+              </p>
+
               <p className="text-xs tracking-[0.18em] text-[#5e744f]">
                 TRUSTED. LOCAL. RELIABLE.
               </p>
@@ -156,19 +178,38 @@ function App() {
           </button>
 
           <nav className="hidden items-center gap-7 text-sm font-bold text-[#254535] md:flex">
-            <button onClick={() => scrollTo("services")} className="hover:text-[#0b6b47]">
+            <button
+              onClick={() => scrollTo("services")}
+              className="hover:text-[#0b6b47]"
+            >
               Services
             </button>
-            <button onClick={() => scrollTo("results")} className="hover:text-[#0b6b47]">
+
+            <button
+              onClick={() => scrollTo("results")}
+              className="hover:text-[#0b6b47]"
+            >
               Results
             </button>
-            <button onClick={() => scrollTo("about")} className="hover:text-[#0b6b47]">
+
+            <button
+              onClick={() => scrollTo("about")}
+              className="hover:text-[#0b6b47]"
+            >
               About
             </button>
-            <button onClick={() => scrollTo("reviews")} className="hover:text-[#0b6b47]">
+
+            <button
+              onClick={() => scrollTo("reviews")}
+              className="hover:text-[#0b6b47]"
+            >
               Reviews
             </button>
-            <button onClick={() => scrollTo("quote")} className="hover:text-[#0b6b47]">
+
+            <button
+              onClick={() => scrollTo("quote")}
+              className="hover:text-[#0b6b47]"
+            >
               Request Quote
             </button>
           </nav>
@@ -182,7 +223,11 @@ function App() {
             </a>
           </div>
 
-          <button className="md:hidden" onClick={() => setMenuOpen(!menuOpen)} aria-label="Open menu">
+          <button
+            className="md:hidden"
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="Open menu"
+          >
             {menuOpen ? <X /> : <Menu />}
           </button>
         </div>
@@ -190,18 +235,34 @@ function App() {
         {menuOpen && (
           <div className="border-t border-[#d8d1bd] bg-[#fbfaf5] px-5 py-4 md:hidden">
             <div className="grid gap-3 text-sm font-bold">
-              <button onClick={() => scrollTo("services")} className="text-left">
+              <button
+                onClick={() => scrollTo("services")}
+                className="text-left"
+              >
                 Services
               </button>
-              <button onClick={() => scrollTo("results")} className="text-left">
+
+              <button
+                onClick={() => scrollTo("results")}
+                className="text-left"
+              >
                 Results
               </button>
-              <button onClick={() => scrollTo("about")} className="text-left">
+
+              <button
+                onClick={() => scrollTo("about")}
+                className="text-left"
+              >
                 About
               </button>
-              <button onClick={() => scrollTo("reviews")} className="text-left">
+
+              <button
+                onClick={() => scrollTo("reviews")}
+                className="text-left"
+              >
                 Reviews
               </button>
+
               <button
                 onClick={() => scrollTo("quote")}
                 className="rounded-full bg-[#06452f] px-5 py-3 text-white"
@@ -238,7 +299,8 @@ function App() {
               transition={{ duration: 0.6 }}
             >
               <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#c8d6b8] bg-white/80 px-4 py-2 text-sm font-bold text-[#06452f] shadow-sm">
-                <ShieldCheck className="h-4 w-4" /> Portland-area cleaning with care and detail
+                <ShieldCheck className="h-4 w-4" />
+                Portland-area cleaning with care and detail
               </div>
 
               <h1 className="max-w-3xl text-5xl font-black tracking-tight text-[#08291c] sm:text-6xl lg:text-7xl">
@@ -246,7 +308,9 @@ function App() {
               </h1>
 
               <p className="mt-6 max-w-2xl text-lg leading-8 text-[#405347]">
-                {business.name} provides trusted local home cleaning, deep cleaning, move-in/move-out cleaning, and recurring services with a professional, personal touch.
+                {business.name} provides trusted local home cleaning, deep
+                cleaning, move-in/move-out cleaning, and recurring services
+                with a professional, personal touch.
               </p>
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -285,21 +349,69 @@ function App() {
                       <p className="text-sm font-bold uppercase tracking-[0.28em] text-[#b6ca94]">
                         {business.title}
                       </p>
-                      <h2 className="mt-3 text-4xl font-black">{business.owner}</h2>
+
+                      <h2 className="mt-3 text-4xl font-black">
+                        {business.owner}
+                      </h2>
                     </div>
+
                     <Leaf className="h-10 w-10 text-[#b6ca94]" />
                   </div>
 
                   <p className="mt-6 text-lg leading-8 text-[#edf5e6]">
-                    Careful, dependable cleaning for homes that deserve a fresh, peaceful reset.
+                    Careful, dependable cleaning for homes that deserve a
+                    fresh, peaceful reset.
                   </p>
                 </div>
 
                 <div className="grid gap-3 p-5">
-                  <ContactLine icon={<Phone />} label="Phone" value={business.phoneDisplay} href={`tel:${business.phoneHref}`} />
-                  <ContactLine icon={<Mail />} label="Email" value={business.email} href={`mailto:${business.email}`} />
-                  <ContactLine icon={<Globe />} label="Website" value={business.websiteDisplay} href={business.websiteHref} />
-                  <ContactLine icon={<MapPin />} label="Location" value={business.location} />
+                  <ContactLine
+                    icon={<Phone />}
+                    label="Phone"
+                    value={business.phoneDisplay}
+                    href={`tel:${business.phoneHref}`}
+                  />
+
+                  <ContactLine
+                    icon={<Mail />}
+                    label="Email"
+                    value={business.email}
+                    href={`mailto:${business.email}`}
+                  />
+
+                  <ContactLine
+                    icon={<Globe />}
+                    label="Website"
+                    value={business.websiteDisplay}
+                    href={business.websiteHref}
+                  />
+
+                  <ContactLine
+                    icon={<HeartHandshake />}
+                    label="Nextdoor"
+                    value="Connect with Heidy on Nextdoor"
+                    href={business.nextdoorPersonal}
+                  />
+
+                  <ContactLine
+                    icon={<HeartHandshake />}
+                    label="Gemasshine on Nextdoor"
+                    value="View our business page"
+                    href={business.nextdoorBusiness}
+                  />
+
+                  <ContactLine
+                    icon={<HeartHandshake />}
+                    label="Facebook"
+                    value="Follow Gemasshine on Facebook"
+                    href={business.facebook}
+                  />
+
+                  <ContactLine
+                    icon={<MapPin />}
+                    label="Location"
+                    value={business.location}
+                  />
                 </div>
               </div>
             </motion.div>
@@ -322,10 +434,18 @@ function App() {
                   className="rounded-[2rem] border border-white/10 bg-white/8 p-7 shadow-xl shadow-black/10"
                 >
                   <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#b6ca94] text-[#06452f]">
-                    {React.cloneElement(service.icon, { className: "h-7 w-7" })}
+                    {React.cloneElement(service.icon, {
+                      className: "h-7 w-7",
+                    })}
                   </div>
-                  <h3 className="mt-6 text-2xl font-black">{service.title}</h3>
-                  <p className="mt-4 leading-7 text-[#e7efe0]">{service.text}</p>
+
+                  <h3 className="mt-6 text-2xl font-black">
+                    {service.title}
+                  </h3>
+
+                  <p className="mt-4 leading-7 text-[#e7efe0]">
+                    {service.text}
+                  </p>
                 </div>
               ))}
             </div>
@@ -352,8 +472,13 @@ function App() {
                   </div>
 
                   <div className="p-7">
-                    <h3 className="text-2xl font-black text-[#08291c]">{item.title}</h3>
-                    <p className="mt-3 leading-7 text-[#405347]">{item.text}</p>
+                    <h3 className="text-2xl font-black text-[#08291c]">
+                      {item.title}
+                    </h3>
+
+                    <p className="mt-3 leading-7 text-[#405347]">
+                      {item.text}
+                    </p>
                   </div>
                 </div>
               ))}
@@ -364,20 +489,28 @@ function App() {
                 <p className="text-sm font-black uppercase tracking-[0.28em] text-[#5e744f]">
                   Work Gallery
                 </p>
+
                 <h3 className="mt-3 text-3xl font-black tracking-tight text-[#08291c]">
                   Clean spaces, finished with care
                 </h3>
               </div>
 
-              <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+              <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
                 {gallery.map((item) => (
                   <div
                     key={item.title}
                     className="overflow-hidden rounded-[1.7rem] border border-[#d8d1bd] bg-white shadow-sm"
                   >
-                    <img src={item.src} alt={item.title} className="h-56 w-full object-cover" />
+                    <img
+                      src={item.src}
+                      alt={item.title}
+                      className="h-56 w-full object-cover"
+                    />
+
                     <div className="p-4">
-                      <p className="font-black text-[#08291c]">{item.title}</p>
+                      <p className="font-black text-[#08291c]">
+                        {item.title}
+                      </p>
                     </div>
                   </div>
                 ))}
@@ -398,7 +531,10 @@ function App() {
               </h2>
 
               <p className="mt-5 text-lg leading-8 text-[#405347]">
-                {business.name} is built around simple communication, dependable service, and detailed cleaning. Whether you need a one-time deep clean or recurring help, the goal is to make your home feel lighter, fresher, and easier to enjoy.
+                {business.name} is built around simple communication,
+                dependable service, and detailed cleaning. Whether you need a
+                one-time deep clean or recurring help, the goal is to make your
+                home feel lighter, fresher, and easier to enjoy.
               </p>
 
               <div className="mt-8 grid gap-4">
@@ -407,11 +543,13 @@ function App() {
                   title="Trusted service"
                   text="Clear communication, respectful home care, and dependable follow-through."
                 />
+
                 <Feature
                   icon={<Clock />}
                   title="Flexible scheduling"
                   text="Request the time and service you need, then confirm the best available appointment."
                 />
+
                 <Feature
                   icon={<HeartHandshake />}
                   title="Personal touch"
@@ -424,12 +562,17 @@ function App() {
               <div className="rounded-[1.7rem] bg-[#fbfaf5] p-7 shadow-lg shadow-[#08291c]/5">
                 <div className="flex items-center gap-3">
                   <Bath className="h-8 w-8 text-[#06452f]" />
-                  <h3 className="text-2xl font-black">What a cleaning can include</h3>
+                  <h3 className="text-2xl font-black">
+                    What a cleaning can include
+                  </h3>
                 </div>
 
                 <div className="mt-7 grid gap-4">
                   {checklist.map((item) => (
-                    <p key={item} className="flex gap-3 leading-7 text-[#405347]">
+                    <p
+                      key={item}
+                      className="flex gap-3 leading-7 text-[#405347]"
+                    >
                       <CheckCircle2 className="mt-1 h-5 w-5 shrink-0 text-[#0b6b47]" />
                       {item}
                     </p>
@@ -437,7 +580,9 @@ function App() {
                 </div>
 
                 <p className="mt-7 rounded-2xl bg-[#f7f4ec] p-5 text-sm leading-6 text-[#405347]">
-                  Final service details and pricing can be confirmed after reviewing the home size, condition, location, and cleaning needs.
+                  Final service details and pricing can be confirmed after
+                  reviewing the home size, condition, location, and cleaning
+                  needs.
                 </p>
               </div>
             </div>
@@ -474,11 +619,17 @@ function App() {
               </h2>
 
               <p className="mt-5 text-lg leading-8 text-[#405347]">
-                {business.name} is built around dependable work, friendly communication, and pride in every job. When you invite us into your home, our goal is simple: leave it cleaner, calmer, and easier to enjoy.
+                {business.name} is built around dependable work, friendly
+                communication, and pride in every job. When you invite us into
+                your home, our goal is simple: leave it cleaner, calmer, and
+                easier to enjoy.
               </p>
 
               <div className="mt-7 rounded-3xl bg-white p-6 shadow-sm">
-                <p className="font-black text-[#08291c]">{business.owner}</p>
+                <p className="font-black text-[#08291c]">
+                  {business.owner}
+                </p>
+
                 <p className="mt-1 text-[#405347]">{business.title}</p>
               </div>
             </div>
@@ -497,7 +648,9 @@ function App() {
               </h2>
 
               <p className="mt-5 text-lg leading-8 text-[#405347]">
-                We use products selected with families and pets in mind, and we are happy to discuss product preferences before service for homes with children, pets, or sensitivities.
+                We use products selected with families and pets in mind, and we
+                are happy to discuss product preferences before service for
+                homes with children, pets, or sensitivities.
               </p>
 
               <div className="mt-8 grid gap-4">
@@ -506,11 +659,13 @@ function App() {
                   title="Family-conscious choices"
                   text="Product choices can be discussed before service so customers feel comfortable."
                 />
+
                 <Feature
                   icon={<ShieldCheck />}
                   title="Pet-aware cleaning"
                   text="Tell us about pets in the home so we can plan the cleaning with care."
                 />
+
                 <Feature
                   icon={<Sparkles />}
                   title="Detailed finish"
@@ -549,8 +704,13 @@ function App() {
                     ))}
                   </div>
 
-                  <p className="mt-5 leading-7 text-[#405347]">“{review.text}”</p>
-                  <p className="mt-6 font-black text-[#08291c]">{review.name}</p>
+                  <p className="mt-5 leading-7 text-[#405347]">
+                    “{review.text}”
+                  </p>
+
+                  <p className="mt-6 font-black text-[#08291c]">
+                    {review.name}
+                  </p>
                 </div>
               ))}
             </div>
@@ -569,7 +729,8 @@ function App() {
               </h2>
 
               <p className="mt-5 text-lg leading-8 text-[#edf5e6]">
-                Send your cleaning request and {business.name} will follow up to confirm the details, schedule, and quote.
+                Send your cleaning request and {business.name} will follow up
+                to confirm the details, schedule, and quote.
               </p>
 
               <div className="mt-8 grid gap-4">
@@ -580,79 +741,97 @@ function App() {
             </div>
 
             <form
-  action="https://formspree.io/f/mykalqba"
-  method="POST"
-  className="rounded-[2rem] border border-[#d8d1bd] bg-white p-6 shadow-xl shadow-[#08291c]/5 lg:p-8"
->
-  <div className="grid gap-5 md:grid-cols-2">
-    <Field label="Full Name" name="name" placeholder="Your name" required />
+              action="https://formspree.io/f/mykalqba"
+              method="POST"
+              className="rounded-[2rem] border border-[#d8d1bd] bg-white p-6 shadow-xl shadow-[#08291c]/5 lg:p-8"
+            >
+              <input
+                type="hidden"
+                name="_subject"
+                value="New Gemasshine Quote Request"
+              />
 
-    <Field
-      label="Phone Number"
-      name="phone"
-      placeholder={business.phoneDisplay}
-      required
-    />
+              <div className="grid gap-5 md:grid-cols-2">
+                <Field
+                  label="Full Name"
+                  name="name"
+                  placeholder="Your name"
+                  required
+                />
 
-    <Field
-      label="Email"
-      name="email"
-      placeholder="you@example.com"
-      type="email"
-      required
-    />
+                <Field
+                  label="Phone Number"
+                  name="phone"
+                  placeholder={business.phoneDisplay}
+                  required
+                />
 
-    <Field label="ZIP Code" name="zip_code" placeholder="97201" />
+                <Field
+                  label="Email"
+                  name="email"
+                  placeholder="you@example.com"
+                  type="email"
+                  required
+                />
 
-    <label>
-      <span className="text-sm font-black text-[#254535]">
-        Cleaning Type
-      </span>
+                <Field
+                  label="ZIP Code"
+                  name="zip_code"
+                  placeholder="97201"
+                />
 
-      <select
-        name="cleaning_type"
-        required
-        className="mt-2 w-full rounded-2xl border border-[#d8d1bd] bg-white px-4 py-3 outline-none focus:border-[#06452f]"
-      >
-        <option value="">Select a cleaning type</option>
-        <option>Home Cleaning</option>
-        <option>Deep Cleaning</option>
-        <option>Recurring Services</option>
-        <option>Move-In / Move-Out</option>
-      </select>
-    </label>
+                <label>
+                  <span className="text-sm font-black text-[#254535]">
+                    Cleaning Type
+                  </span>
 
-    <Field
-      label="Preferred Date"
-      name="preferred_date"
-      type="date"
-    />
+                  <select
+                    name="cleaning_type"
+                    required
+                    defaultValue=""
+                    className="mt-2 w-full rounded-2xl border border-[#d8d1bd] bg-white px-4 py-3 outline-none focus:border-[#06452f]"
+                  >
+                    <option value="" disabled>
+                      Select a cleaning type
+                    </option>
+                    <option>Home Cleaning</option>
+                    <option>Deep Cleaning</option>
+                    <option>Recurring Services</option>
+                    <option>Move-In / Move-Out</option>
+                  </select>
+                </label>
 
-    <label className="md:col-span-2">
-      <span className="text-sm font-black text-[#254535]">
-        Cleaning Details
-      </span>
+                <Field
+                  label="Preferred Date"
+                  name="preferred_date"
+                  type="date"
+                />
 
-      <textarea
-        name="cleaning_details"
-        required
-        className="mt-2 min-h-36 w-full rounded-2xl border border-[#d8d1bd] px-4 py-3 outline-none focus:border-[#06452f]"
-        placeholder="Example: 3 bedrooms, 2 bathrooms, kitchen, living room. Please focus on bathrooms, floors, and kitchen."
-      />
-    </label>
-  </div>
+                <label className="md:col-span-2">
+                  <span className="text-sm font-black text-[#254535]">
+                    Cleaning Details
+                  </span>
 
-  <button
-    type="submit"
-    className="mt-6 w-full rounded-full bg-[#06452f] px-7 py-4 text-base font-black text-white hover:bg-[#083823]"
-  >
-    Submit Quote Request
-  </button>
+                  <textarea
+                    name="cleaning_details"
+                    required
+                    className="mt-2 min-h-36 w-full rounded-2xl border border-[#d8d1bd] px-4 py-3 outline-none focus:border-[#06452f]"
+                    placeholder="Example: 3 bedrooms, 2 bathrooms, kitchen, living room. Please focus on bathrooms, floors, and kitchen."
+                  />
+                </label>
+              </div>
 
-  <p className="mt-4 text-center text-xs text-[#5f6f63]">
-    Quote requests are sent directly to {business.email}.
-  </p>
-</form>
+              <button
+                type="submit"
+                className="mt-6 w-full rounded-full bg-[#06452f] px-7 py-4 text-base font-black text-white hover:bg-[#083823]"
+              >
+                Submit Quote Request
+              </button>
+
+              <p className="mt-4 text-center text-xs text-[#5f6f63]">
+                Quote requests are sent directly to {business.email}.
+              </p>
+            </form>
           </div>
         </section>
       </main>
@@ -667,6 +846,7 @@ function App() {
 
               <div>
                 <p className="text-xl font-black">{business.name}</p>
+
                 <p className="text-xs tracking-[0.18em] text-[#b6ca94]">
                   TRUSTED. LOCAL. RELIABLE.
                 </p>
@@ -674,7 +854,8 @@ function App() {
             </div>
 
             <p className="mt-5 max-w-md text-sm leading-7 text-[#dce7d2]">
-              Professional local cleaning for homes, deep cleans, move cleanings, and recurring service.
+              Professional local cleaning for homes, deep cleans, move
+              cleanings, and recurring service.
             </p>
           </div>
 
@@ -682,20 +863,35 @@ function App() {
             <p className="font-black">Contact</p>
 
             <div className="mt-4 grid gap-3 text-sm text-[#dce7d2]">
-              <a href={`tel:${business.phoneHref}`} className="flex items-center gap-2 hover:text-white">
-                <Phone className="h-4 w-4" /> {business.phoneDisplay}
+              <a
+                href={`tel:${business.phoneHref}`}
+                className="flex items-center gap-2 hover:text-white"
+              >
+                <Phone className="h-4 w-4" />
+                {business.phoneDisplay}
               </a>
 
-              <a href={`mailto:${business.email}`} className="flex items-center gap-2 hover:text-white">
-                <Mail className="h-4 w-4" /> {business.email}
+              <a
+                href={`mailto:${business.email}`}
+                className="flex items-center gap-2 hover:text-white"
+              >
+                <Mail className="h-4 w-4" />
+                {business.email}
               </a>
 
-              <a href={business.websiteHref} className="flex items-center gap-2 hover:text-white">
-                <Globe className="h-4 w-4" /> {business.websiteDisplay}
+              <a
+                href={business.websiteHref}
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center gap-2 hover:text-white"
+              >
+                <Globe className="h-4 w-4" />
+                {business.websiteDisplay}
               </a>
 
               <p className="flex items-center gap-2">
-                <MapPin className="h-4 w-4" /> {business.location}
+                <MapPin className="h-4 w-4" />
+                {business.location}
               </p>
             </div>
           </div>
@@ -735,7 +931,11 @@ function SectionHeading({ eyebrow, title, description, dark = false }) {
         {title}
       </h2>
 
-      <p className={`mt-4 text-lg leading-8 ${dark ? "text-[#e7efe0]" : "text-[#405347]"}`}>
+      <p
+        className={`mt-4 text-lg leading-8 ${
+          dark ? "text-[#e7efe0]" : "text-[#405347]"
+        }`}
+      >
         {description}
       </p>
     </div>
@@ -759,15 +959,25 @@ function ContactLine({ icon, label, value, href }) {
       </div>
 
       <div>
-        <p className="text-xs font-black uppercase tracking-wider text-[#5e744f]">{label}</p>
+        <p className="text-xs font-black uppercase tracking-wider text-[#5e744f]">
+          {label}
+        </p>
+
         <p className="font-bold text-[#08291c]">{value}</p>
       </div>
     </div>
   );
 
   if (href) {
+    const isExternal = href.startsWith("http");
+
     return (
-      <a href={href} className="block hover:opacity-90">
+      <a
+        href={href}
+        target={isExternal ? "_blank" : undefined}
+        rel={isExternal ? "noreferrer" : undefined}
+        className="block hover:opacity-90"
+      >
         {content}
       </a>
     );
@@ -779,7 +989,12 @@ function ContactLine({ icon, label, value, href }) {
 function PhotoBlock({ label, src }) {
   return (
     <div className="relative min-h-72 bg-[#ede7d8]">
-      <img src={src} alt={`${label} cleaning result`} className="h-72 w-full object-cover" />
+      <img
+        src={src}
+        alt={`${label} cleaning result`}
+        className="h-72 w-full object-cover"
+      />
+
       <div className="absolute left-4 top-4 rounded-full bg-[#06452f] px-4 py-2 text-sm font-black text-white shadow-lg">
         {label}
       </div>
@@ -802,16 +1017,24 @@ function Feature({ icon, title, text }) {
   );
 }
 
-function Field({ label, placeholder = "", type = "text", name }) {
+function Field({
+  label,
+  placeholder = "",
+  type = "text",
+  name,
+  required = false,
+}) {
   return (
     <label>
       <span className="text-sm font-black text-[#254535]">{label}</span>
+
       <input
-  name={name}
-  type={type}
-  placeholder={placeholder}
-  className="mt-2 w-full rounded-2xl border border-[#d8d1bd] px-4 py-3 outline-none focus:border-[#06452f]"
-/>
+        name={name}
+        type={type}
+        placeholder={placeholder}
+        required={required}
+        className="mt-2 w-full rounded-2xl border border-[#d8d1bd] px-4 py-3 outline-none focus:border-[#06452f]"
+      />
     </label>
   );
 }
@@ -819,7 +1042,8 @@ function Field({ label, placeholder = "", type = "text", name }) {
 function QuotePoint({ text }) {
   return (
     <p className="flex items-center gap-3 text-[#edf5e6]">
-      <CheckCircle2 className="h-5 w-5 text-[#b6ca94]" /> {text}
+      <CheckCircle2 className="h-5 w-5 text-[#b6ca94]" />
+      {text}
     </p>
   );
 }
