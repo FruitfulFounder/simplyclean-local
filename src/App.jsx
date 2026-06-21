@@ -24,7 +24,7 @@ const business = {
   name: "Gemasshine",
   owner: "Heidy Lopez",
   title: "Owner & Operator",
-  phoneDisplay: "(503) 969-5980",
+   phoneDisplay: "(503) 969-5980",
   phoneHref: "+15039695980",
   email: "gemasshine@outlook.com",
   websiteDisplay: "www.gemasshine.com",
@@ -581,44 +581,79 @@ function App() {
             </div>
 
             <form
-              className="rounded-[2rem] border border-[#d8d1bd] bg-white p-6 shadow-xl shadow-[#08291c]/5 lg:p-8"
-              onSubmit={(e) => e.preventDefault()}
-            >
-              <div className="grid gap-5 md:grid-cols-2">
-                <Field label="Full Name" placeholder="Your name" />
-                <Field label="Phone Number" placeholder={business.phoneDisplay} />
-                <Field label="Email" placeholder="you@example.com" type="email" />
-                <Field label="ZIP Code" placeholder="97201" />
+  action="https://formspree.io/f/mykalqba"
+  method="POST"
+  className="rounded-[2rem] border border-[#d8d1bd] bg-white p-6 shadow-xl shadow-[#08291c]/5 lg:p-8"
+>
+  <div className="grid gap-5 md:grid-cols-2">
+    <Field label="Full Name" name="name" placeholder="Your name" required />
 
-                <label>
-                  <span className="text-sm font-black text-[#254535]">Cleaning Type</span>
-                  <select className="mt-2 w-full rounded-2xl border border-[#d8d1bd] bg-white px-4 py-3 outline-none focus:border-[#06452f]">
-                    <option>Home Cleaning</option>
-                    <option>Deep Cleaning</option>
-                    <option>Recurring Services</option>
-                    <option>Move-In / Move-Out</option>
-                  </select>
-                </label>
+    <Field
+      label="Phone Number"
+      name="phone"
+      placeholder={business.phoneDisplay}
+      required
+    />
 
-                <Field label="Preferred Date" type="date" />
+    <Field
+      label="Email"
+      name="email"
+      placeholder="you@example.com"
+      type="email"
+      required
+    />
 
-                <label className="md:col-span-2">
-                  <span className="text-sm font-black text-[#254535]">Cleaning Details</span>
-                  <textarea
-                    className="mt-2 min-h-36 w-full rounded-2xl border border-[#d8d1bd] px-4 py-3 outline-none focus:border-[#06452f]"
-                    placeholder="Example: 3 bedrooms, 2 bathrooms, kitchen, living room. Please focus on bathrooms, floors, and kitchen."
-                  />
-                </label>
-              </div>
+    <Field label="ZIP Code" name="zip_code" placeholder="97201" />
 
-              <button className="mt-6 w-full rounded-full bg-[#06452f] px-7 py-4 text-base font-black text-white hover:bg-[#083823]">
-                Submit Quote Request
-              </button>
+    <label>
+      <span className="text-sm font-black text-[#254535]">
+        Cleaning Type
+      </span>
 
-              <p className="mt-4 text-center text-xs text-[#5f6f63]">
-                Quote requests will be connected to {business.email} when the form is activated.
-              </p>
-            </form>
+      <select
+        name="cleaning_type"
+        required
+        className="mt-2 w-full rounded-2xl border border-[#d8d1bd] bg-white px-4 py-3 outline-none focus:border-[#06452f]"
+      >
+        <option value="">Select a cleaning type</option>
+        <option>Home Cleaning</option>
+        <option>Deep Cleaning</option>
+        <option>Recurring Services</option>
+        <option>Move-In / Move-Out</option>
+      </select>
+    </label>
+
+    <Field
+      label="Preferred Date"
+      name="preferred_date"
+      type="date"
+    />
+
+    <label className="md:col-span-2">
+      <span className="text-sm font-black text-[#254535]">
+        Cleaning Details
+      </span>
+
+      <textarea
+        name="cleaning_details"
+        required
+        className="mt-2 min-h-36 w-full rounded-2xl border border-[#d8d1bd] px-4 py-3 outline-none focus:border-[#06452f]"
+        placeholder="Example: 3 bedrooms, 2 bathrooms, kitchen, living room. Please focus on bathrooms, floors, and kitchen."
+      />
+    </label>
+  </div>
+
+  <button
+    type="submit"
+    className="mt-6 w-full rounded-full bg-[#06452f] px-7 py-4 text-base font-black text-white hover:bg-[#083823]"
+  >
+    Submit Quote Request
+  </button>
+
+  <p className="mt-4 text-center text-xs text-[#5f6f63]">
+    Quote requests are sent directly to {business.email}.
+  </p>
+</form>
           </div>
         </section>
       </main>
@@ -768,15 +803,16 @@ function Feature({ icon, title, text }) {
   );
 }
 
-function Field({ label, placeholder = "", type = "text" }) {
+function Field({ label, placeholder = "", type = "text", name }) {
   return (
     <label>
       <span className="text-sm font-black text-[#254535]">{label}</span>
       <input
-        type={type}
-        placeholder={placeholder}
-        className="mt-2 w-full rounded-2xl border border-[#d8d1bd] px-4 py-3 outline-none focus:border-[#06452f]"
-      />
+  name={name}
+  type={type}
+  placeholder={placeholder}
+  className="mt-2 w-full rounded-2xl border border-[#d8d1bd] px-4 py-3 outline-none focus:border-[#06452f]"
+/>
     </label>
   );
 }
