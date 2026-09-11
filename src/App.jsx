@@ -21,7 +21,7 @@ import {
 } from "lucide-react";
 
 const business = {
-  name: "Gemasshine",
+  name: "Gemasshine LLC",
   owner: "Heidy Lopez",
   title: "Owner & Operator",
   phoneDisplay: "(503) 969-5980",
@@ -75,7 +75,7 @@ const checklist = [
 const reviews = [
   {
     name: "Jessica T.",
-    text: "Gemasshine made my home feel brand new. The bathrooms and kitchen looked amazing.",
+    text: "Gemasshine LLC made my home feel brand new. The bathrooms and kitchen looked amazing.",
   },
   {
     name: "Monica S.",
